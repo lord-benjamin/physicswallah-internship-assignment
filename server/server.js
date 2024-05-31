@@ -77,11 +77,11 @@ app.post('/filter',async(req,res)=>{
             app = (filters?.applicantsNo.min<=item.applicantsNo && item.applicantsNo<=filters?.applicantsNo.max)
         }
         let cat = true
-        if(filters?.category){
+        if(filters?.category && filters?.category.length!==0){
             cat = (filters?.category.includes(item.category))
         }
         let ski = true
-        if(filters?.skills){
+        if(filters?.skills && filters?.skills.length!==0){
             ski = false;
             for(let i=0; i<item.skills.length; ++i) {
                 if(filters?.skills.includes(item.skills[i])){
@@ -91,7 +91,7 @@ app.post('/filter',async(req,res)=>{
             }
         }
         let loc = true
-        if(filters?.location){
+        if(filters?.location && filters?.location.length!==0){
             loc = (filters?.location.includes(item.location))
         }
 
